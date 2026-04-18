@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Über uns - Guardian Forces</title>
+</head>
+
+<body>
+    <header><h1>
+        <a href="Home.html">
+            <div id="logo">
+                <img src="bilder/logo.png" alt="Logo von Guardian Forces"><br>
+            </div>
+        </a><h1>Über unsere Gesellschaft</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="galerie.html">Galerie</a>
+        <a href="bewerbung.html">Bewerbung</a>
+        <a href="#" onclick="checkMemberAccess()">Mitgliederbereich</a>
+        <a href="archiv.html">archiv</a>
+    </nav>
+
+    <script>
+    function checkMemberAccess() {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'mitglieder.html';
+        } else {
+            window.location.href = 'login.html';
+        }
+    }
+    </script>
+
+    <div class="container">
+        <h2>Was suchen wir?</h2>
+            <p>Wir suchen aktive Spieler, die Lust auf Dungeons, Raids und soziale Events haben.</p>
+
+        <h2>Was bieten wir?</h2>
+            <p>Ein Gesellschaftshaus (Erstattung der 300.000 Gil nach 30 Tagen Zimmerbesitz!), 24/7 Buffs, kostenlose Begleiter (welche sich regelmäßig in der Gesellschaftsbank ansammeln), Events und Hilfestellungen bei Fragen, Dungeons oder Raids! 
+                Zudem bieten wir die Möglichkeit für ein Festes Deep Dungeon oder Savage Team, Aber auch wenn ihr nur mal in diese Sachen Reinschnuppern wollt, Stehen euch jederzeit Ansprechpartner zur Verfügung.
+                Bei Interesse gerne melden!
+                Bitte habt Verständnis das wir als Leitung der FG vor der Einstellung immer gerne mit jedem ein kleines Willkommens Gespräch durchführen!!</p>
+    </div>
+    <div class="footer"><a href="impressum.html" style="color:gray">Impressum</a></div>
+    <p>"FINAL FANTASY XIV © 2010 - 2024 SQUARE ENIX CO., LTD. All Rights Reserved."</p>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Mitgliederbereich - Guardian Forces</title>
+</head>
+
+<body>
+    <header><h1>
+        <a href="Home.html">
+            <div id="logo">
+                <img src="bilder/logo.png" alt="Logo von Guardian Forces"><br>
+            </div>
+        </a><h1>Interner Bereich</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="galerie.html">Galerie</a>
+        <a href="bewerbung.html">Bewerbung</a>
+        <a href="#" onclick="checkMemberAccess()">Mitgliederbereich</a>
+        <a href="archiv.html">archiv</a>
+    </nav>
+
+    <script>
+    function checkMemberAccess() {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'mitglieder.html';
+        } else {
+            window.location.href = 'login.html';
+        }
+    }
+    </script>
+
+    <div class="container">
+        <h2>Mitglieder-Login</h2>
+        <p>Bitte gib das Passwort ein, das du im Discord erhalten hast.</p>
+        <input type="password" id="passwort" placeholder="Passwort...">
+        <button onclick="checkLogin()">Einloggen</button>
+
+        <script>
+            function checkLogin() {
+            const pw = document.getElementById('passwort').value;
+             const korrektesPW = "GF2024"; // Dein geheimes FG-Passwort
+
+            if (pw === korrektesPW) {
+            localStorage.setItem('isLoggedIn', 'true'); // Merkt sich den Login
+            window.location.href = 'events.html'; // Weiterleitung zum Kalender
+            } else {
+            alert("Falsches Passwort! Frage einen Offizier im Discord.");
+            }
+            }
+        </script>
+        <p>Nach dem Login siehst du hier:</p>
+            <ul>
+                <li><strong>Mitgliederliste:</strong> Wer ist aktuell dabei?</li>
+                <li><strong>Discord Link:</strong> Direkter Invite-Link.</li>
+                <li><strong>Events:</strong> Interne Raid-Planung sowie Event-Planung.</li>
+             </ul>
+    </div>
+    <div class="footer"><a href="impressum.html" style="color:gray">Impressum</a></div>
+    <p>"FINAL FANTASY XIV © 2010 - 2024 SQUARE ENIX CO., LTD. All Rights Reserved."</p>
+    
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Guardian Forces - Home</title>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="Home.html">
+                <div id="logo">
+                    <img src="bilder/logo.png" alt="Logo">
+                </div>
+            </a>
+        </h1><h1>Willkommen bei den Guardian Forces</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="galerie.html">Galerie</a>
+        <a href="bewerbung.html">Bewerbung</a>
+        <a href="#" onclick="checkMemberAccess()">Mitgliederbereich</a>
+        <a href="archiv.html">archiv</a>
+    </nav>
+
+    <script>
+    function checkMemberAccess() {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'mitglieder.html';
+        } else {
+            window.location.href = 'login.html';
+        }
+    }
+    </script>
+
+    <div class="container">
+        <h2>Impressum</h2>
+        
+        <h3>Angaben gemäß § 5 TMG</h3>
+        <p>
+            Frank Palm<br>
+            Venusweg 10<br>
+            39118 Magdeburg
+        </p>
+
+        <h3>Kontakt</h3>
+        <p>
+            E-Mail: Frankpalm1990@outlook.de<br>
+        </p>
+
+        <h3>Redaktionell verantwortlich</h3>
+        <p>
+            Frank Palm<br>
+            Venusweg 10<br>
+            39118 Magdeburg
+        </p>
+
+        <h3>Datenschutz (DSGVO)</h3>
+        <p>Die Informationen und Daten für die Bewerbung werden ausschließlich:<br>
+            1. nur für die Bewerbung genutzt<br>
+            2. gelöscht sobald sie nicht mehr gebraucht werden<br>
+            3. nicht an dritte weitergegeben<br>
+        </p>
+
+        <hr>
+        <h3>Haftungsausschluss (Disclaimer)</h3>
+        <p><strong>Haftung für Links:</strong> Unser Angebot enthält Links zu externen Webseiten Dritter (z. B. den Loadstone oder Discord). Auf deren Inhalte haben wir keinen Einfluss und übernehmen daher keine Gewähr.</p>
+        
+        <h3>Urheberrecht</h3>
+        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung.</p>
+        
+        <p><em>FINAL FANTASY XIV © 2010 - 2024 SQUARE ENIX CO., LTD. All Rights Reserved.</em></p>
+    </div>
+
+</body>
+</html>

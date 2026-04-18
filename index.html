@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Guardian Forces - Home</title>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="Home.html">
+                <div id="logo">
+                    <img src="bilder/logo.png" alt="Logo">
+                </div>
+            </a>
+        </h1><h1>Willkommen bei den Guardian Forces</h1>
+    </header>
+
+     <nav>
+        <a href="index.html">Home</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="galerie.html">Galerie</a>
+        <a href="bewerbung.html">Bewerbung</a>
+        <a href="#" onclick="checkMemberAccess()">Mitgliederbereich</a>
+        <a href="archiv.html">archiv</a>
+    </nav>
+
+        <section class="news-section">
+            <h2>✨ Neuigkeiten aus der FG</h2>
+
+            <div id="memberGreeting" style="display:none; background: rgba(0,255,0,0.1); padding: 10px; margin-bottom: 20px; border: 1px solid green;">
+                Hallo Guardian! Schön, dass du da bist. <a href="events.html" style="color: white; font-weight: bold;">Zu den Events ➔</a>
+            </div>
+
+            <script>
+                if (localStorage.getItem('isLoggedIn') === 'true') {
+                    document.getElementById('memberGreeting').style.display = 'block';
+                }
+            </script>
+            
+            <div class="news-entry">
+                <span class="news-date">18. April 2026</span>
+                <div class="news-content">
+                    <h4>Sieg über den neuen Raid-Boss!</h4>
+                    <p>Gestern Abend haben wir erfolgreich den neuesten Extreme-Trial bezwungen. Stolz auf die ganze Truppe! Screenshots findet ihr in der Galerie.</p>
+                </div>
+            </div>
+
+            <div class="news-entry">
+                <span class="news-date">10. April 2026</span>
+                <div class="news-content">
+                    <h4>Frühlingsfest im FG-Haus</h4>
+                    <p>Unser Garten wurde neu gestaltet. Kommt vorbei und genießt die Kirschblütenzeit in Shirogane!</p>
+                </div>
+            </div>
+        </section>
+
+    <script>
+    function checkMemberAccess() {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'mitglieder.html';
+        } else {
+            window.location.href = 'login.html';
+        }
+    }
+    </script>
+
+    <div class="container">
+        <h2>Eure neue Heimat in Eorzea</h2>
+        <p>Wir sind eine eingeschworene Gemeinschaft, die gemeinsam Abenteuer bestreitet.</p>
+        <p>Nutze die Navigation oben, um mehr über uns zu erfahren oder dich direkt zu bewerben!</p>
+        <hr>
+        <h3>Quick-Links</h3>
+            <ul>
+                <li><a href="https://de.finalfantasyxiv.com/lodestone/community_finder/da2e119fe20c1f74cbcfa08f163026704aeb1f8c/" style="color:var(--gold)">Lodestone Gesuch</a></li>
+                <li><a href="https://de.finalfantasyxiv.com/lodestone/ranking/fc/weekly/" style="color:var(--gold)">Gesellschafts-Ranking</a></li>
+            </ul>
+    </div>
+    <div class="footer"><a href="impressum.html" style="color:gray">Impressum</a></div>
+    <p>"FINAL FANTASY XIV © 2010 - 2024 SQUARE ENIX CO., LTD. All Rights Reserved."</p>
+
+    <script>
+        // Prüfen, ob jemand eingeloggt ist
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            // Optional: Verändere das Design für eingeloggte Mitglieder
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                if(link.innerText === "Mitgliederbereich") {
+                    link.style.color = "#00ff00"; // Zeige durch Farbe, dass man eingeloggt ist
+                    link.innerText = "🛡️ Interner Bereich";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Bewerbung - Guardian Forces</title>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="Home.html">
+                <div id="logo">
+                    <img src="bilder/logo.png" alt="Logo von Guardian Forces"><br>
+                </div>
+            </a>
+        <h1>Werde ein Teil von uns</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="galerie.html">Galerie</a>
+        <a href="bewerbung.html">Bewerbung</a>
+        <a href="#" onclick="checkMemberAccess()">Mitgliederbereich</a>
+        <a href="archiv.html">archiv</a>
+    </nav>
+
+    <script>
+    function checkMemberAccess() {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'mitglieder.html';
+        } else {
+            window.location.href = 'login.html';
+        }
+    }
+    </script>
+
+    <div class="container">
+        <h2>Werde ein Teil der Guardian Forces</h2>
+        <form id="applyForm">
+            <input type="text" id="ingameName" placeholder="Ingame Name" required>
+            <input type="text" id="discordName" placeholder="Discord Name (z.B. Name#1234)" required>
+            <input type="text" id="activeTime" placeholder="Deine aktiven Zeiten">
+            <input type="text" id="experience" placeholder="Spielerfahrung (z.B. Endwalker Veteran)">
+            <select id="raidInterest">
+                <option value="Keine Angabe">Interesse an Raids?</option>
+                <option value="Ja, sehr!">Ja, sehr!</option>
+                <option value="Gelegentlich">Gelegentlich</option>
+                <option value="Nein">Nein</option>
+            </select>
+            <input type="text" id="mainClass" placeholder="Deine Main Klasse">
+            <textarea id="description" placeholder="Erzähl uns kurz was über dich..." rows="5"></textarea>
+        
+            <button type="submit">Bewerbung absenden</button>
+        </form>
+        <p id="statusMsg" style="margin-top:15px; font-weight:bold;"></p>
+    </div>
+    <div class="footer"><a href="impressum.html" style="color:gray">Impressum</a></div>
+    <p>"FINAL FANTASY XIV © 2010 - 2024 SQUARE ENIX CO., LTD. All Rights Reserved."</p>
+
+    <script>
+    document.getElementById('applyForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Verhindert das Neuladen der Seite
+
+        const webhookURL = "https://discord.com/api/webhooks/1495133033857286264/DLAGSOrECMa1ktzd5Ef1v3_pmq0li_IlL_jDzV7pi4j_DC03pK3Z3WP3EtEoGlm5jHgL"; // <--- HIER DEN LINK EINSETZEN
+
+        // Daten aus dem Formular sammeln
+        const data = {
+            embeds: [{
+                title: "📬 Neue FG-Bewerbung!",
+                color: 12951641, // Gold-Ton (Hex zu Dezimal)
+                fields: [
+                    { name: "Ingame Name", value: document.getElementById('ingameName').value, inline: true },
+                    { name: "Discord Name", value: document.getElementById('discordName').value, inline: true },
+                    { name: "Aktivität", value: document.getElementById('activeTime').value },
+                    { name: "Erfahrung", value: document.getElementById('experience').value },
+                    { name: "Raid-Interesse", value: document.getElementById('raidInterest').value, inline: true },
+                    { name: "Main Klasse", value: document.getElementById('mainClass').value, inline: true },
+                    { name: "Beschreibung", value: document.getElementById('description').value }
+                ],
+                footer: { text: "Gesendet über Guardian Forces Website" },
+                timestamp: new Date()
+            }]
+        };
+
+        // Nachricht an Discord senden
+        fetch(webhookURL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById('statusMsg').innerText = "✅ Bewerbung erfolgreich gesendet! Wir melden uns bei dir.";
+                document.getElementById('statusMsg').style.color = "#c5a059";
+                document.getElementById('applyForm').reset();
+            } else {
+                throw new Error();
+            }
+        })
+        .catch(err => {
+            document.getElementById('statusMsg').innerText = "❌ Fehler beim Senden. Bitte versuche es später erneut.";
+            document.getElementById('statusMsg').style.color = "red";
+        });
+    });
+    </script>
+    
+</body>
+</html>

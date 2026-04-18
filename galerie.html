@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Galerie - Guardian Forces</title>
+</head>
+<body>
+    <header><h1>
+        <a href="Home.html">
+          <div id="logo">
+            <img src="bilder/logo.png" alt="Logo von Guardian Forces"><br>
+        </div>
+        </a><h1>Galerie</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="galerie.html">Galerie</a>
+        <a href="bewerbung.html">Bewerbung</a>
+        <a href="#" onclick="checkMemberAccess()">Mitgliederbereich</a>
+        <a href="archiv.html">archiv</a>
+    </nav>
+
+    <script>
+    function checkMemberAccess() {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'mitglieder.html';
+        } else {
+            window.location.href = 'login.html';
+        }
+    }
+    </script>
+
+    <div class="container">
+    <h2>Galerie</h2>
+
+    <details class="folder-section">
+        <summary>📁 Unser FG-Haus</summary>
+            <div class="image-grid">
+                <img src="images/galerie/housing/garten.jpg" alt="Garten" onclick="openLightbox(this)">
+            </div>
+    </details>
+
+    <details class="folder-section">
+        <summary>📁 Raid-Screenshots</summary>
+            <div class="image-grid">
+                <img src="images/galerie/raids/bild1.jpg" alt="Raid 1" onclick="openLightbox(this)">
+                <img src="images/galerie/raids/bild2.jpg" alt="Raid 2" onclick="openLightbox(this)">
+            </div>
+    </details>
+
+    <details class="folder-section">
+        <summary>📁 FG-Events</summary>
+
+            <div class="image-grid">
+                <details class="folder-section">
+                    <summary>📁 FG-Schatzkarten</summary>
+                        <img src="bilder/galerie/events/Schatzkarten/2024-12-18_21h21_42.png" alt="Event 1" onclick="openLightbox(this)">
+            </div>
+    </details>
+
+    <details class="folder-section">
+        <summary>📁 FG-Feiern</summary>
+
+            <div class="image-grid">
+                <details class="folder-section">
+                    <summary>📁 FG-Hochzeit</summary>
+                        <img src="bilder/galerie/Feiern/Hochzeit/Hochzeit.png" alt="Event 1" onclick="openLightbox(this)">
+                        <img src="" alt="Event 1" onclick="openLightbox(this)">
+                    <summary>🎬 Video-Highlights</summary>
+                        <div class="video-grid">
+                        <div class="video-item">
+                            <video controls width="100%" poster="bilder/galerie/Feiern/Hochzeit/Videos/Video Vorschaubild.png">
+                            <source src="bilder/galerie/Feiern/Hochzeit/Videos/Video.mp4" type="video/mp4">
+                                    Dein Browser unterstützt dieses Videoformat nicht.
+                            </video>
+                            <p>Hochzeit von Chizuna und Nanami</p>
+                        </div>
+                </details>
+            </div>
+            </div>
+            <div class="footer"><a href="impressum.html" style="color:gray">Impressum</a></div>
+            <p>"FINAL FANTASY XIV © 2010 - 2024 SQUARE ENIX CO., LTD. All Rights Reserved."</p>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+            <img id="lightbox-img" src="" alt="Großansicht">
+    </div>
+
+    <script>
+    function openLightbox(imgElement) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        lightboxImg.src = imgElement.src; // Nimmt die Quelle des angeklickten Bildes
+        lightbox.style.display = 'flex';  // Zeigt das Fenster an
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none'; // Versteckt das Fenster
+    }
+    </script>
+    
+
+</body>
+</html>

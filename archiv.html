@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Guardian Forces - Home</title>
+</head>
+
+    <body>
+        <header>
+            <h1>
+                <a href="Home.html">
+                    <div id="logo">
+                        <img src="bilder/logo.png" alt="Logo">
+                    </div>
+                </a>
+            </h1><h1>Archiv</h1>
+        </header>
+
+        <section class="news-section">
+                    <h2>✨ Vergangene Events und Abenteuer</h2>
+                    
+                    <div class="news-entry">
+                        <span class="news-date">18. April 2026</span>
+                        <div class="news-content">
+                            <h4>Sieg über den neuen Raid-Boss!</h4>
+                            <p>Gestern Abend haben wir erfolgreich den neuesten Extreme-Trial bezwungen. Stolz auf die ganze Truppe! Screenshots findet ihr in der Galerie.</p>
+                        </div>
+                    </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="ueber-uns.html">Über uns</a>
+            <a href="galerie.html">Galerie</a>
+            <a href="bewerbung.html">Bewerbung</a>
+            <a href="#" onclick="checkMemberAccess()">Mitgliederbereich</a>
+            <a href="archiv.html">archiv</a>
+        </nav>
+
+        <script>
+        function checkMemberAccess() {
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                window.location.href = 'mitglieder.html';
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+        </script>
+
+        </div>
+        <div class="footer"><a href="impressum.html" style="color:gray">Impressum</a></div>
+        <p>"FINAL FANTASY XIV © 2010 - 2024 SQUARE ENIX CO., LTD. All Rights Reserved."</p>
+
+
+    </body>
+</html>
